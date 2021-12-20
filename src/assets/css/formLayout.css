@@ -1,0 +1,20 @@
+.boxLayout {
+  width: 440px;
+  height: 440px;
+  overflow: scroll;
+  overflow-x: hidden;
+  margin-left: 26em;
+  padding-right: 0.9em;
+}
+.formLayout {
+  width: 320px;
+  height: 325px;
+}
+.button {
+  float: right;
+}
+.my-form-label {
+  float:left; 
+  margin-left: 0.5em;
+  font-weight: bold;
+}
