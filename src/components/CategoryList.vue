@@ -42,7 +42,7 @@ import { useRouter, useRoute } from "vue-router";
 const router = useRouter();
 const route = useRoute();
 
-const categoryStore = useCategoryMainStore;
+const categoryStore = useCategoryMainStore();
 const categories = ref([]);
 const submitted = ref(false);
 
@@ -87,7 +87,8 @@ function addNewCategoryCode() {
   });
 }
 async function findAllCategories() {
-  categories.value = categoryStore.findAll();
+  categoryStore.findAll();
+ // categories.value = categoryStore.items.values;
   
 }
 </script>

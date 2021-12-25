@@ -1,23 +1,30 @@
 import Category from "@/models/CategoryModel";
 import CategoryRepository from "@/service/CategoryRepository";
+import CategoryType from "@/types/CategoryType";
 import { defineStore } from "pinia";
 
 export type RootState = {
   items: Category[];
 };
 
+
+interface CategoryState {
+  all: Record<string, CategoryType>
+  ids: string[]
+}
 export const useCategoryMainStore = defineStore({
-  id: "categoryMainStore",
-   state: () =>
-    ({
-      items: [],
-    } as RootState),
+  id: "categoryStore",
+  state: (): CategoryState => ({
+    all: {},
+    ids: []
+  }),
 
   actions: {
+    /*
     createNewItem(item: Category) {
       if (!item) return;
 
-      this.items.push(item);
+     // this.items.push(item);
     },
 
     updateItem(id: string, payload: Category) {
@@ -27,6 +34,7 @@ export const useCategoryMainStore = defineStore({
 
       if (index !== -1) {
         this.items = CategoryRepository.findAllCategories();
+        return this.items;
       }
     },
 
@@ -37,13 +45,17 @@ export const useCategoryMainStore = defineStore({
 
       this.items.splice(index, 1);
     },
-
+*/
     findIndexById(id: string) {
-      return this.items.findIndex((item) => item.id === parseInt(id));
+     // return this.items.findIndex((item) => item.id === parseInt(id));
     },
 
     findAll() {
-      this.items = CategoryRepository.findAllCategories();
-    }
+      const mitems = CategoryRepository.findAllCategories();
+      console.log("itemsL " + mitems);
+      const data: Category[] = CategoryRepository.findAllCategories();
+
+      console.log("items: " + data);
+    },
   },
 });
